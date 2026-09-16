@@ -12,7 +12,7 @@ function draw() {
     fill(255, 230, 0)
     noStroke()
 
-    circle(x, y, 60)
+   triangle(x, y, 60)
 
     y = y + ySpeed
 
