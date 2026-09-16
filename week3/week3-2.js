@@ -16,7 +16,7 @@ function setup() {
 
 function draw() {
 
-    background(0);
+    background(0)
 
     lerpedMouseX = lerp(lerpedMouseX, mouseX, 0.05)
     lerpedMouseY = lerp(lerpedMouseY, mouseY, 0.05)
