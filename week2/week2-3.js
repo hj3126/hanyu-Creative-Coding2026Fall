@@ -1,9 +1,8 @@
+let x=100
+let y=100
 
-    let x=100
-    let y=100
-
-    let xspeed=3
-    let yspeed=5
+let xspeed=3
+let yspeed=5
 function setup(){
     createCanvas(windowWidth, windowHeight)
 rectMode(CENTER)
