@@ -5,7 +5,7 @@
     let xspeed=3
     let yspeed=5
 function setup(){
-    createcanvas(windowwidth,windowheight)
+    createCanvas(windowWidth, windowHeight)
 rectMode(CENTER)
 }
 function draw(){
@@ -14,7 +14,7 @@ fill(255)
     rect(x,y,80,80)
     x = xspeed+x
     y = yspeed+y
-}
+
 if (x>width || x<40){
     xspeed = -xspeed
 }
@@ -24,4 +24,5 @@ if (y>height || y<40){
 }
 if(y<40){
     yspeed = -yspeed
+}
 }   

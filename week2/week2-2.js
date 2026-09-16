@@ -6,7 +6,7 @@ function setup() {
 }
 
 function draw() {
-    background(100);
+    background(138, 43, 226);
 
     let y = height / 2 + sin(x * 0.02) * (height / 2);
 
