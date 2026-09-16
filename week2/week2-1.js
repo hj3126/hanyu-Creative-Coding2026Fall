@@ -18,5 +18,5 @@ if (mouseX < width / 2 && mouseY > height / 2) {
     if (mouseX > width / 2 && mouseY > height / 2) {
         fill(160, 130, 160)
     }
-      circle(mouseX, mouseY, 80)
+      circle(mouseX, mouseY, 100)
 }

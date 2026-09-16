@@ -12,16 +12,16 @@ function draw() {
     fill(255, 230, 0)
     noStroke()
 
-   triangle(x, y, 60)
+   circle(x, y, 100)
 
     y = y + ySpeed
 
-    if (y > height - 30) {
+    if (y > height - 50) {
         ySpeed = -ySpeed
         x = x + 250
     }
 
-    if (y < 30) {
+    if (y < 50) {
         ySpeed = -ySpeed
         x = x + 250
     }
