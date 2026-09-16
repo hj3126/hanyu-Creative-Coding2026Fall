@@ -1,5 +1,5 @@
 let x = 100
-let y = 40
+let y = 50
 let ySpeed = 5
 
 function setup() {
