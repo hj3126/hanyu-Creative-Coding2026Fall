@@ -1,8 +1,5 @@
-let y = 0
-let r = 0
 
-let lerpedMouseX = 0
-let lerpedMouseY = 0
+let r = 0
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -10,7 +7,6 @@ function setup() {
     angleMode(DEGREES)
 
     stroke(255)
-    strokeWeight(2)
     noFill()
 }
 
@@ -18,66 +14,42 @@ function draw() {
 
     background(0)
 
-    lerpedMouseX = lerp(lerpedMouseX, mouseX, 0.05)
-    lerpedMouseY = lerp(lerpedMouseY, mouseY, 0.05)
+    r = mouseX * 0.2
 
-    r = lerpedMouseX
+ for (let x = 40; x < width; x += 80) {
+
+for (let y = 40; y < height; y += 80) {
+
+            push()
+
+            translate(x, y)
 
 
 
-    push();
+            strokeWeight(1)
+            circle(0, 0, 55)
 
-    translate(3 * width / 4, height / 2)
-    rotate(r)
-    scale(0.5)
 
-    line(0, 0, 200, 0);
-    triangle(-40, 35, 0, -50, 40, 35)
+    
+            push()
 
-    translate(200, 0)
-    rotate(r)
-    scale(1.5)
+            rotate(r)
 
-    triangle(-40, 35, 0, -50, 40, 35)
-    line(0, 0, 200, 0)
+            strokeWeight(2)
+            line(0, 0, 0, -20)
 
-    translate(200, 0)
-    rotate(r)
+            pop()
+        push()
 
-    triangle(-40, 35, 0, -50, 40, 35)
-    line(0, 0, 200, 0)
+            rotate(-r * 0.5)
 
-    translate(200, 0)
-    rotate(r)
+            strokeWeight(2)
+            line(0, 0, 14, 0)
 
-    triangle(-40, 35, 0, -50, 40, 35)
-    pop()
+            pop()
 
-    push()
 
-    translate(width / 4, height / 2)
-    rotate(-r)
-    scale(0.5)
-
-    line(0, 0, 200, 0)
-    triangle(-40, 35, 0, -50, 40, 35)
-
-    translate(200, 0)
-    rotate(r)
-    scale(1.5)
-
-    triangle(-40, 35, 0, -50, 40, 35)
-    line(0, 0, 200, 0)
-    translate(200, 0)
-    rotate(r)
-
-    triangle(-40, 35, 0, -50, 40, 35)
-    line(0, 0, 200, 0)
-
-    translate(200, 0)
-    rotate(r)
-
-    triangle(-40, 35, 0, -50, 40, 35)
-
-    pop()
+            pop()
+        }
+    }
 }

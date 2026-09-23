@@ -22,20 +22,16 @@ function draw() {
     }
 
  if (y > height - 50) {
-        ySpeed = -ySpeed
+     ySpeed = -ySpeed
     }
 
   fill(70, 110, 80)
 
-    triangle(
-        0, height,
+    triangle( 0, height,
         width / 4, height / 2,
-        width / 2, height
-    )
+        width / 2, height )
 
-    triangle(
-        width / 3, height,
+    triangle(width / 3, height,
         width * 2 / 3, height / 2,
-        width, height
-    )
+        width, height )
 }
