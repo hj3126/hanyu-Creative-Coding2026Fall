@@ -1,5 +1,6 @@
 
 let frames = []
+let bgImg
 
 let activeHole = 0
 let currentFrame = 0
@@ -18,7 +19,10 @@ async function setup() {
     frameRate(12)
     imageMode(CENTER)
 
-    //  images into Array
+    // Load grass background
+    bgImg = await loadImage("grass_bg.png")
+
+    // Load images into Array
     for (let i = 1; i <= 20; i++) {
 
         let fileName
@@ -49,13 +53,22 @@ function draw() {
 
     background(240)
 
-    // stage 0 = appear
-    // stage 1 = if click
-    // stage 2 = capture animation
+    // Draw grass background
+    image(
+        bgImg,
+        width / 2,
+        height / 2,
+        width,
+        height
+    )
+
+    // 0 = appear
+    //  1 = waiting for click
+    //  2 = capture animation
 
     if (frameCount - lastChange >= frameDelay) {
 
-        //  1-8
+        // Frames 1-8
         if (stage == 0) {
 
             if (currentFrame < 7) {
@@ -65,14 +78,13 @@ function draw() {
             }
         }
 
-        //  9-20
+        // Frames 9-20
         else if (stage == 2) {
 
             if (currentFrame < 19) {
                 currentFrame++
             } else {
 
-                
                 currentFrame = 0
                 stage = 0
 
@@ -85,7 +97,7 @@ function draw() {
     }
 
 
-    // 9 holes
+    // Draw 9 holes
     for (let i = 0; i < 9; i++) {
 
         let col = i % 3
@@ -106,7 +118,6 @@ function draw() {
 
         } else {
 
-           
             image(
                 frames[0],
                 x,
@@ -121,9 +132,7 @@ function draw() {
 
 function mousePressed() {
 
-    // Only allow clicks when character
-    // is waiting at Frame 8
-
+    // Click the character at Frame 8
     if (stage == 1) {
 
         let col = activeHole % 3
