@@ -1,42 +1,99 @@
-let cols = 20
-let rows = 20
-
-let i = 0
+let saveSvg = false
 
 function setup() {
-    createCanvas(windowWidth, windowHeight)
+    createCanvas(576, 384)
 
-    noFill()
-    rectMode(CENTER)
+    angleMode(DEGREES)
+}
+
+function keyPressed() {
+
+    if (key == 's' || key == 'S') {
+        saveSvg = true
+    }
 }
 
 function draw() {
 
     background(255)
 
-    translate(
-        0.5 * width / cols,
-        0.5 * height / rows
-    )
 
-
-    for (let x = 0; x < width; x += width / cols) {
-
-        for (let y = 0; y < height; y += height / rows) {
-
-            let n = noise(x * 0.01,y * 0.01,
-                i
-            )
-
-            fill(n * 255)
-
-            rect(x,y,
-                n * width / cols,
-                n * height / rows
-            )
-        }
+    // SVG
+    if (saveSvg) {
+        beginRecordSvg("week3-1.svg")
     }
 
 
-    i += 0.01
+    stroke(0)
+    strokeWeight(1)
+    noFill()
+
+
+    translate(width / 2, height / 2)
+
+
+    for (let i = 0; i < 24; i++) {
+
+        push()
+
+
+        let angle = i * 15
+
+
+        let baseX = 200 * sin(angle)
+
+
+        let clockY =
+            85 * sin(angle) * cos(angle)
+
+
+        let gap = 20
+
+        let clockX
+
+
+        if (baseX > 0) {
+
+            clockX = baseX + gap
+
+        } else {
+
+            clockX = baseX - gap
+        }
+
+
+        translate(clockX, clockY)
+
+
+        // first hand
+        push()
+
+        rotate(angle + frameCount * 0.5)
+
+        line(0, 0, 0, -16)
+
+        pop()
+
+
+        // second hand
+        push()
+
+        rotate(-angle + frameCount * 0.15)
+
+        line(0, 0, 11, 0)
+
+        pop()
+
+
+        pop()
+    }
+
+
+    // finish and save SVG
+    if (saveSvg) {
+
+        endRecordSvg()
+
+        saveSvg = false
+    }
 }

@@ -1,3 +1,5 @@
+let saveSvg = false
+
 function setup() {
     createCanvas(576, 384)
 
@@ -14,219 +16,118 @@ function setup() {
     noLoop()
 }
 
+function keyPressed() {
+    if (key == 's' || key == 'S') {
+        saveSvg = true
+        redraw()
+    }
+}
 
 function draw() {
 
     background(255)
 
+    // SVG
+    if (saveSvg) {
+        beginRecordSvg("week4-3.svg")
+    }
+
     translate(width / 2, height / 2)
-
-
-    // --------------------------------
-    // 6 rotating Mobius-inspired rings
-    // --------------------------------
 
     for (let ring = 0; ring < 6; ring++) {
 
         push()
 
-        // 每一个莫比乌斯环围绕中心旋转
         rotate(ring * 30)
 
-        // 每一层大小稍微不同
         let size = 0.72 + ring * 0.045
-
         scale(size)
 
-
-        // draw one Mobius-inspired ring
         for (let i = 0; i < 90; i++) {
 
             push()
 
-
             let angle = i * 4
 
-
-            // infinity path
-            let x =
-                150 * sin(angle)
-
-            let y =
-                72 *
-                sin(angle) *
-                cos(angle)
-
+            let x = 150 * sin(angle)
+            let y = 72 * sin(angle) * cos(angle)
 
             translate(x, y)
 
-
-            // 让每个小钟跟着路径方向旋转
             rotate(angle)
 
-
-            // fake 3D depth
+            // 改这里：让环更接近均匀圆形
             let depth =
-                0.45 +
-                0.55 *
-                (sin(angle) + 1)
-
+                0.7 +
+                0.3 *
+                abs(sin(angle))
 
             scale(depth)
 
+            let n = noise(i * 0.05, ring * 0.2)
 
-            // subtle noise
-            let n =
-                noise(
-                    i * 0.05,
-                    ring * 0.2
-                )
+            let handMove = map(
+                n,
+                0,
+                1,
+                0.7,
+                1.2
+            )
 
-            let handMove =
-                map(
-                    n,
-                    0,
-                    1,
-                    0.7,
-                    1.2
-                )
-
-
-            // ----------------
-            // small clock unit
-            // ----------------
-
-
-            // hour hand
+            // hour
             push()
-
-            rotate(
-                angle * 2
-                + ring * 12
-            )
-
-            line(
-                0,
-                0,
-                0,
-                -10 * handMove
-            )
-
+            rotate(angle * 2 + ring * 12)
+            line(0, 0, 0, -10 * handMove)
             pop()
 
-
-            // minute hand
+            // minute
             push()
-
-            rotate(
-                -angle * 3
-                + ring * 8
-            )
-
-            line(
-                0,
-                0,
-                8 * handMove,
-                0
-            )
-
+            rotate(-angle * 3 + ring * 8)
+            line(0, 0, 8 * handMove, 0)
             pop()
-
 
             // center
-            circle(
-                0,
-                0,
-                2.5
-            )
-
+            circle(0, 0, 2.5)
 
             pop()
         }
 
-
         pop()
     }
 
-
-
-    // ----------------------------
-    // CENTER CLOCK
-    // ----------------------------
-
+    // center clock
     push()
 
-
-    // small center circle
-    strokeWeight(1.2)
-
-    circle(
-        0,
-        0,
-        70
-    )
-
-
-    // hour
+    // hour hand
     push()
-
     rotate(225)
-
     strokeWeight(2.5)
-
-    line(
-        0,
-        0,
-        0,
-        -18
-    )
-
+    line(0, 0, 0, -18)
     pop()
 
-
-    // minute
+    // minute hand
     push()
-
     rotate(80)
-
     strokeWeight(2)
-
-    line(
-        0,
-        0,
-        0,
-        -27
-    )
-
+    line(0, 0, 0, -27)
     pop()
 
-
-    // second
+    // second hand
     push()
-
     rotate(325)
-
     strokeWeight(1)
-
-    line(
-        0,
-        0,
-        0,
-        -32
-    )
-
+    line(0, 0, 0, -32)
     pop()
 
-
-    // center point
+    // center
     strokeWeight(1.5)
-
-    circle(
-        0,
-        0,
-        5
-    )
-
+    circle(0, 0, 5)
 
     pop()
+
+    // SVG
+    if (saveSvg) {
+        endRecordSvg()
+        saveSvg = false
+    }
 }
