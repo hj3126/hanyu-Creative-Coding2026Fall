@@ -68,7 +68,7 @@ function draw() {
 
     if (frameCount - lastChange >= frameDelay) {
 
-        // Frames 1-8
+        //  1-8
         if (stage == 0) {
 
             if (currentFrame < 7) {
@@ -78,7 +78,7 @@ function draw() {
             }
         }
 
-        // Frames 9-20
+        //  9-20
         else if (stage == 2) {
 
             if (currentFrame < 19) {
@@ -88,7 +88,7 @@ function draw() {
                 currentFrame = 0
                 stage = 0
 
-                // Choose another random hole
+                // 选一个别的洞
                 activeHole = floor(random(9))
             }
         }

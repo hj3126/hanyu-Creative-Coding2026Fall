@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projection Mapping — Image Starter</title>
+
+  <!-- The library versions follow the p5.mapper official Basic example. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.5/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jdeboi/p5.mapper@main/dist/p5.mapper.min.js"></script>
+
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+    canvas { display: block; }
+    #panel {
+      position: fixed; top: 12px; left: 12px; z-index: 99;
+      max-width: min(340px, 90vw); padding: 11px 13px;
+      border: 1px solid #39d6cf; border-radius: 9px;
+      color: white; background: rgba(4, 18, 27, .92);
+      font: 12px/1.6 Arial, 'Microsoft YaHei', sans-serif;
+    }
+    #panel strong { color: #69f5e3; font-size: 14px; }
+    #panel button { padding: 5px 9px; margin: 6px 4px 0 0; cursor: pointer; }
+    #status { color: #d4e9f5; white-space: pre-line; }
+    #warning { color: #ffb6a8; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div id="panel">
+    <strong>IMAGE PROJECTION MAPPING</strong>
+    <div id="status">正在启动...</div>
+    <div>
+      <button id="modeBtn">纯色测试 (T)</button>
+      <button id="calibBtn">关闭校准 (C)</button>
+      <button id="saveBtn">保存 (S)</button>
+    </div>
+    <div>B+C 已合成一个面：拖动上排 3 点、下排 3 点进行校准。</div>
+    <div>按 T 切换图片/纯色 · C 校准 · S 保存 · L 加载 · F 全屏 · H 隐藏面板</div>
+    <div id="warning"></div>
+  </div>
+
+  <!-- No animation.js required. -->
+  <script src="mapping.js"></script>
+</body>
+</html>
